@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\users\models\UserdetailSearch */
@@ -12,12 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="userdetail-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  Pjax::begin();
+ // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Userdetail', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,11 +24,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+         //  'id',
             'username',
-            'password',
+           // 'password',
+		    'fullname',
+			
             'email:email',
-            'name',
+             [
+				'attribute' => 'status',
+				'format' => 'raw',
+				'value' => function ($model) {
+					return $model->status == 0 ? "In Active" : "Active";
+				},
+			],
+
             // 'auth_key',
             // 'create_at',
             // 'lastvisit_at',
@@ -41,8 +49,12 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'is_seller',
             // 'is_advertiser',
 
-            ['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]); 
+	
+	
+Pjax::end();
+	?>
 
 </div>

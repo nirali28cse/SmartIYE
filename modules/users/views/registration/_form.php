@@ -12,17 +12,15 @@ use yii\widgets\ActiveForm;
 
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-	
+		
+    <?= $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 	
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
-	
 	
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+	
+	<?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
 
     <?php // $form->field($model, 'activkey')->textInput(['maxlength' => true]) ?>
 
@@ -42,7 +40,7 @@ use yii\widgets\ActiveForm;
 		<div class="sub_home">
 			<div class="sub_home_left">
 				<div class="form-group">
-					<?= Html::submitButton($model->isNewRecord ? 'Sign Up' : 'Update', ['class' =>'submitbutton']) ?>
+					<?= Html::submitButton($model->isNewRecord ? 'Sign Up' : 'Update', ['class' => 'btn btn-primary btn-block btn-flat']) ?>
 				</div>
 			</div>
 			<div class="sub_home_right">

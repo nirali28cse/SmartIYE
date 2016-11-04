@@ -37,17 +37,28 @@ class RegistrationController extends Controller
     public function actionIndex()
     {
 
-		$this->layout = '/zorens_main/front_layout/registration';
+		// $this->layout = '/zorens_main/front_layout/registration';
 		
         $model = new Userdetail();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-             return $this->goHome();
-        } else {
+		if ($model->load(Yii::$app->request->post())) {
+		
+			if (isset($_POST['Userdetail'])) {
+				$password=$_POST['Userdetail']['password'];
+				$model->password=MD5($password);	
+			}
+			
+			if($model->save()){
+				 Yii::$app->user->switchIdentity($model); // log in
+				return $this->goHome();
+			}
+
+        } 
+		
             return $this->render('create', [
                 'model' => $model,
             ]);
-        }
+
     } 
 	
 }
