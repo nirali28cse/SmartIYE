@@ -58,9 +58,20 @@ class SiteController extends Controller
      *
      * @return string
      */
+	 
+	public function actionDashbord()
+    {
+		return $this->render('dashbord');
+	}
+	 
     public function actionIndex()
     {
-        return $this->render('index');
+		if (Yii::$app->user->isGuest) {
+          return $this->redirect(['users/login']);
+        }else{
+			 return $this->render('index');
+		}
+       
     }
 
     /**

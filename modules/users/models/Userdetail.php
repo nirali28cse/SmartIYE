@@ -45,12 +45,12 @@ class Userdetail extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'email', 'name', 'is_agree_with_terms_conditions'], 'required'],
-            [['create_at', 'lastvisit_at'], 'safe'],
-            [['superuser', 'status', 'is_agree_with_terms_conditions', 'is_employeer', 'is_job_seeker', 'is_seller', 'is_advertiser'], 'integer'],
+            [['username', 'password', 'fullname', 'email',  'is_agree_with_terms_conditions'], 'required'],
+            [['create_at'], 'safe'],
+            [['status', 'is_agree_with_terms_conditions'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['password', 'email', 'auth_key'], 'string', 'max' => 128],
-            [['name'], 'string', 'max' => 500],
+          //  [['name'], 'string', 'max' => 500],
             [['username'], 'unique'],
             [['email'], 'unique'],
 			['is_agree_with_terms_conditions', 'compare', 'compareValue' => 1, 'operator' => '=='],
@@ -67,17 +67,11 @@ class Userdetail extends \yii\db\ActiveRecord implements IdentityInterface
             'username' => 'Username',
             'password' => 'Password',
             'email' => 'Email',
-            'name' => 'Name',
+            'fullname' => 'Name',
             'auth_key' => 'Auth Key',
-            'create_at' => 'Create At',
-            'lastvisit_at' => 'Lastvisit At',
-            'superuser' => 'Superuser',
+            'create_at' => 'Create At',            
             'status' => 'Status',
-            'is_agree_with_terms_conditions' => 'I agree Terms and condition',
-            'is_employeer' => 'Is Employeer',
-            'is_job_seeker' => 'Is Job Seeker',
-            'is_seller' => 'Is Seller',
-            'is_advertiser' => 'Is Advertiser',
+            
         ];
     }
 	

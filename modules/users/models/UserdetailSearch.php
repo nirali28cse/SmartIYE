@@ -18,8 +18,8 @@ class UserdetailSearch extends Userdetail
     public function rules()
     {
         return [
-            [['id', 'superuser', 'status', 'is_agree_with_terms_conditions', 'is_employeer', 'is_job_seeker', 'is_seller', 'is_advertiser'], 'integer'],
-            [['username', 'password', 'email', 'name', 'auth_key', 'create_at', 'lastvisit_at'], 'safe'],
+            [['id', 'status', 'is_agree_with_terms_conditions'], 'integer'],
+            [['username','fullname', 'password', 'email', 'auth_key', 'create_at'], 'safe'],
         ];
     }
 
@@ -57,21 +57,16 @@ class UserdetailSearch extends Userdetail
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'create_at' => $this->create_at,
-            'lastvisit_at' => $this->lastvisit_at,
-            'superuser' => $this->superuser,
+            'create_at' => $this->create_at,            
             'status' => $this->status,
             'is_agree_with_terms_conditions' => $this->is_agree_with_terms_conditions,
-            'is_employeer' => $this->is_employeer,
-            'is_job_seeker' => $this->is_job_seeker,
-            'is_seller' => $this->is_seller,
-            'is_advertiser' => $this->is_advertiser,
+           
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'password', $this->password])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'fullname', $this->fullname])
             ->andFilterWhere(['like', 'auth_key', $this->auth_key]);
 
         return $dataProvider;
