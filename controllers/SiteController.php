@@ -65,7 +65,18 @@ class SiteController extends Controller
 			// by 1000.
 			$x = time() * 1000;
 			// The y value is a random number
-			$y = rand(0, 100);
+		//	$y = rand(0, 100);
+			$api_url="https://rsp-vpn.mbconnect24.net/portal/index.php?option=com_dataapi&key=ZQFwUAbKw15OHi4TBNQq&sn=361490600139&tagid=184&live=1";
+			// $request = "uname=pragna&password=123abc&sender=KACHUA&receiver=9510000691&route=T&msgtype=1&sms=Hi,your course from kachhua.com is sent through SPEED POST";
+			$responce =file_get_contents($api_url);
+			$responce =json_decode($responce);
+			
+			if($responce[0]!=null){
+				$value=$responce[0]->value;
+				$y=$value;
+			}else{
+				$y=0;
+			}
 
 			// Create a PHP array and echo it as JSON
 			$ret = array($x, $y);

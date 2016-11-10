@@ -22,60 +22,59 @@ $this->title = 'Chart Dashbord';
 
     </section>
 
-<script>
 
+  <!-- 2. Add the JavaScript to initialize the chart on document ready -->
+  <script>
+    var chart; // global
+    var chartRsrp;
 
-var chart; // global
-
-function requestData() {
-    $.ajax({
+    function requestData() {
+      $.ajax({
         url: '<?php echo  Yii::getAlias('@web'); ?>/index.php?r=site/livedata',
         success: function(point) {
-            var series = chart.series[0],
-                shift = series.data.length > 20; // shift if the series is 
-                                                 // longer than 20
+          var series = chart.series[0],
+            shift = series.data.length > 30; // shift if the series is longer than 20
 
+          // add the point
+          chart.series[0].addPoint(eval(point), true, shift);
 
-            // add the point
-            chart.series[0].addPoint(point, true, shift);
-            
-            // call it again after one second
-            setTimeout(requestData, 1000);    
+          // call it again after one second
+          setTimeout(requestData, 1700);
         },
         cache: false
-    });
-}
+      });
+    }
 
-$(document).ready(function() {
-    chart = new Highcharts.Chart({
+    $(document).ready(function() {
+      chart = new Highcharts.Chart({
         chart: {
-            renderTo: 'container',
-            defaultSeriesType: 'spline',
-            events: {
-                load: requestData
-            }
+          renderTo: 'container',
+          defaultSeriesType: 'spline',
+          events: {
+            load: requestData
+          }
         },
         title: {
-            text: 'Live Data'
+          text: 'Parameter Chart'
         },
         xAxis: {
-            type: 'datetime',
-            tickPixelInterval: 150,
-            maxZoom: 20 * 1000
+          type: 'datetime',
+          tickPixelInterval: 150,
+          maxZoom: 20 * 1000
         },
         yAxis: {
-            minPadding: 0.2,
-            maxPadding: 0.2,
-            title: {
-                text: 'Value',
-                margin: 80
-            }
+          minPadding: 2.5,
+          maxPadding: 2.5,
+          title: {
+            text: 'cms',
+            margin: 80
+          }
         },
         series: [{
-            name: 'Random data',
-            data: []
+          name: 'Parameter Name',
+          data: []
         }]
-    });        
-});
+      });
 
-</script>
+    });
+  </script>
