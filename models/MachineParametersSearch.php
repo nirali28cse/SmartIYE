@@ -41,8 +41,12 @@ class MachineParametersSearch extends MachineParameters
      */
     public function search($params)
     {
-        $query = MachineParameters::find();
-
+        
+		if(Yii::$app->user->identity->is_admin){
+		   $query = MachineParameters::find();	
+		}else{
+		   $query = MachineParameters::find()->joinWith(['machine.plant'=>function ($query) {  $query->Where(['user_id'=>Yii::$app->user->id]); } ]);
+		}
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

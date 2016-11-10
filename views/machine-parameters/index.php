@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			 'attribute' => 'machine_id',
 			 'value' => 'machine.machine_name'
 			 ],
+            'tag_id',
             'param_name',
           //  'create_at',
 

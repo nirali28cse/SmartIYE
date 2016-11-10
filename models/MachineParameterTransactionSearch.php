@@ -41,8 +41,12 @@ class MachineParameterTransactionSearch extends MachineParameterTransaction
      */
     public function search($params)
     {
-        $query = MachineParameterTransaction::find();
 
+		if(Yii::$app->user->identity->is_admin){
+		   $query = MachineParameterTransaction::find();	
+		}else{
+		   $query = MachineParameterTransaction::find()->joinWith(['machine.plant'=>function ($query) {  $query->Where(['user_id'=>Yii::$app->user->id]); } ]);
+		}
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
