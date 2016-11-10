@@ -36,6 +36,9 @@ class CompanyDetailController extends Controller
     public function actionIndex()
     {
         $searchModel = new CompanyDetailSearch();
+		if(!Yii::$app->user->identity->is_admin){
+		 $searchModel->user_id = Yii::$app->user->id;	
+		}
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

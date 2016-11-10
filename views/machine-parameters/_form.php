@@ -17,6 +17,8 @@ use app\models\MachineMaster;
 	<?= $form->field($model, 'machine_id')->dropDownList($listData, ['prompt'=>'Select Machine']); ?>
 	
 	
+    <?= $form->field($model, 'tag_id')->textInput(['maxlength' => true]) ?>
+	
     <?= $form->field($model, 'param_name')->textInput(['maxlength' => true]) ?>
 
 

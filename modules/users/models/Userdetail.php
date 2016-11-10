@@ -15,7 +15,6 @@ use yii\web\IdentityInterface;
  * @property string $username
  * @property string $password
  * @property string $email
- * @property string $name
  * @property string $auth_key
  * @property string $create_at
  * @property string $lastvisit_at
@@ -49,7 +48,7 @@ class Userdetail extends \yii\db\ActiveRecord implements IdentityInterface
             [['create_at'], 'safe'],
             [['status', 'is_agree_with_terms_conditions'], 'integer'],
             [['username'], 'string', 'max' => 20],
-            [['password', 'email', 'auth_key'], 'string', 'max' => 128],
+            [['password', 'email', 'auth_key', 'api_key', 'api_sn'], 'string', 'max' => 128],
           //  [['name'], 'string', 'max' => 500],
             [['username'], 'unique'],
             [['email'], 'unique'],

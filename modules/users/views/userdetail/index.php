@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		    'fullname',
 			
             'email:email',
+		
              [
 				'attribute' => 'status',
 				'format' => 'raw',
@@ -46,10 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'is_agree_with_terms_conditions',
             // 'is_employeer',
             // 'is_job_seeker',
-            // 'is_seller',
-            // 'is_advertiser',
+             'api_key',
+             'api_sn',
 
-           // ['class' => 'yii\grid\ActionColumn'],
+           	[
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{update}',			
+			],
         ],
     ]); 
 	

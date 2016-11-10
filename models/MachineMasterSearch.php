@@ -41,8 +41,13 @@ class MachineMasterSearch extends MachineMaster
      */
     public function search($params)
     {
-        $query = MachineMaster::find();
-
+        
+		if(Yii::$app->user->identity->is_admin){
+		   $query = MachineMaster::find();	
+		}else{
+		   $query = MachineMaster::find()->joinWith(['plant'=>function ($query) {  $query->Where(['user_id'=>Yii::$app->user->id ]); } ]);
+		}
+		
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

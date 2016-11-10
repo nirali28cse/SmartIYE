@@ -36,6 +36,9 @@ class PlantMasterController extends Controller
     public function actionIndex()
     {
         $searchModel = new PlantMasterSearch();
+		if(!Yii::$app->user->identity->is_admin){
+		 $searchModel->user_id = Yii::$app->user->id;	
+		}
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

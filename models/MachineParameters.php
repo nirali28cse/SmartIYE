@@ -32,8 +32,8 @@ class MachineParameters extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['machine_id', 'param_name'], 'required'],
-            [['machine_id'], 'integer'],
+            [['machine_id', 'tag_id', 'param_name'], 'required'],
+            [['tag_id','machine_id'], 'integer'],
           //  [['create_at'], 'safe'],
             [['param_name'], 'string', 'max' => 100],
             [['machine_id'], 'exist', 'skipOnError' => true, 'targetClass' => MachineMaster::className(), 'targetAttribute' => ['machine_id' => 'id']],
@@ -48,7 +48,8 @@ class MachineParameters extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'machine_id' => 'Machine ID',
-            'param_name' => 'Param Name',
+            'tag_id' => 'Tag ID',
+            'param_name' => 'Tag Name',
             'create_at' => 'Create At',
         ];
     }

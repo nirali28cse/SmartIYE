@@ -58,6 +58,8 @@ class MachineMaster extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+
+	 
     public function getPlant()
     {
         return $this->hasOne(PlantMaster::className(), ['id' => 'plant_id']);

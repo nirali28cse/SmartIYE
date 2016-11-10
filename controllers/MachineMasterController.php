@@ -36,6 +36,7 @@ class MachineMasterController extends Controller
     public function actionIndex()
     {
         $searchModel = new MachineMasterSearch();
+	
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
