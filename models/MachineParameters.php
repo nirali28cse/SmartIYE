@@ -35,7 +35,7 @@ class MachineParameters extends \yii\db\ActiveRecord
             [['machine_id', 'tag_id', 'param_name'], 'required'],
             [['tag_id','machine_id'], 'integer'],
           //  [['create_at'], 'safe'],
-            [['param_name'], 'string', 'max' => 100],
+            [['param_name','units'], 'string', 'max' => 100],
             [['machine_id'], 'exist', 'skipOnError' => true, 'targetClass' => MachineMaster::className(), 'targetAttribute' => ['machine_id' => 'id']],
         ];
     }
