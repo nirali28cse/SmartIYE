@@ -23,7 +23,7 @@ $this->title = 'Chart Dashbord';
 use app\models\MachineParameters;
 $get_tags =  MachineParameters::find()->joinWith(['machine.plant'=>function ($query) {  $query->Where(['user_id'=>Yii::$app->user->id]); } ])->all();
 
-
+if(count($get_tags)>0){
 ?>
 
    <section class="content">
@@ -208,6 +208,12 @@ $get_tags =  MachineParameters::find()->joinWith(['machine.plant'=>function ($qu
 	
   </script>
   	  <?php } ?>
+ <?php }else{
+	
+	echo 'Sorry machine parameter not allocate to this user.';
+ ?>
+ 
+ <?php } ?>
 
   
       </div>
