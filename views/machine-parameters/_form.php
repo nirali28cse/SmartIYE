@@ -20,6 +20,8 @@ use app\models\MachineMaster;
     <?= $form->field($model, 'tag_id')->textInput(['maxlength' => true]) ?>
 	
     <?= $form->field($model, 'param_name')->textInput(['maxlength' => true]) ?>
+	
+    <?= $form->field($model, 'units')->textInput(['maxlength' => true]) ?>
 
 
     <div class="form-group">

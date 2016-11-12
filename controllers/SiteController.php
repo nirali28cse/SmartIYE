@@ -61,12 +61,16 @@ class SiteController extends Controller
 	 
 	public function actionLivedata()
     {
+
+			$tag_id=$_GET['tag_id'];
+			$user_key=Yii::$app->user->identity->api_key;
+			$user_sn=Yii::$app->user->identity->api_sn;
 			// The x value is the current JavaScript time, which is the Unix time multiplied 
 			// by 1000.
 			$x = time() * 1000;
 			// The y value is a random number
 		//	$y = rand(0, 100);
-			$api_url="https://rsp-vpn.mbconnect24.net/portal/index.php?option=com_dataapi&key=ZQFwUAbKw15OHi4TBNQq&sn=361490600139&tagid=184&live=1";
+			$api_url="https://rsp-vpn.mbconnect24.net/portal/index.php?option=com_dataapi&key=ZQFwUAbKw15OHi4TBNQq&sn=361490600139&tagid=".$tag_id."&live=1";
 			// $request = "uname=pragna&password=123abc&sender=KACHUA&receiver=9510000691&route=T&msgtype=1&sms=Hi,your course from kachhua.com is sent through SPEED POST";
 			$responce =file_get_contents($api_url);
 			$responce =json_decode($responce);
@@ -85,12 +89,16 @@ class SiteController extends Controller
 	
 	public function actionLivedataguage()
     {
+		
+			$tag_id=$_GET['tag_id'];
+			$user_key=Yii::$app->user->identity->api_key;
+			$user_sn=Yii::$app->user->identity->api_sn;
 			// The x value is the current JavaScript time, which is the Unix time multiplied 
 			// by 1000.
 			$x = time() * 1000;
 			// The y value is a random number
 		//	$y = rand(0, 100);
-			$api_url="https://rsp-vpn.mbconnect24.net/portal/index.php?option=com_dataapi&key=ZQFwUAbKw15OHi4TBNQq&sn=361490600139&tagid=184&live=1";
+			$api_url="https://rsp-vpn.mbconnect24.net/portal/index.php?option=com_dataapi&key=ZQFwUAbKw15OHi4TBNQq&sn=361490600139&tagid=".$tag_id."&live=1";
 			// $request = "uname=pragna&password=123abc&sender=KACHUA&receiver=9510000691&route=T&msgtype=1&sms=Hi,your course from kachhua.com is sent through SPEED POST";
 			$responce =file_get_contents($api_url);
 			$responce =json_decode($responce);
