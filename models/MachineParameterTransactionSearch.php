@@ -51,6 +51,7 @@ class MachineParameterTransactionSearch extends MachineParameterTransaction
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+			'pagination'=>false,    
         ]);
 
         $this->load($params);
