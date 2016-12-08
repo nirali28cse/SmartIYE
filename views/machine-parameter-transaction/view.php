@@ -30,11 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'machine_parameters_id',
+            'machine_parameter_tag_id',
             'machine_parameters_name',
             'machine_parameters_value',
-            'create_date',
-            'create_time',
             'machine_id',
+            'entry_timestamp',
         ],
     ]) ?>
 

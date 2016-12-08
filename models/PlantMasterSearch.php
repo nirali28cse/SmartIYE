@@ -41,8 +41,12 @@ class PlantMasterSearch extends PlantMaster
      */
     public function search($params)
     {
-        $query = PlantMaster::find();
 
+		if(Yii::$app->user->identity->is_admin==1){
+			 $query = PlantMaster::find();
+		}else{
+			 $query = PlantMaster::find()->where(['user_id' => Yii::$app->user->id]);
+		}
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

@@ -12,6 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="machine-parameter-transaction-create">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
