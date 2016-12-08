@@ -18,8 +18,8 @@ class MachineParameterTransactionSearch extends MachineParameterTransaction
     public function rules()
     {
         return [
-            [['id', 'machine_parameters_id', 'machine_id'], 'integer'],
-            [['machine_parameters_name', 'machine_parameters_value', 'create_date', 'create_time'], 'safe'],
+            [['id', 'machine_parameters_id', 'machine_parameter_tag_id', 'machine_id'], 'integer'],
+            [['machine_parameters_name', 'machine_parameters_value', 'entry_timestamp'], 'safe'],
         ];
     }
 
@@ -65,13 +65,13 @@ class MachineParameterTransactionSearch extends MachineParameterTransaction
         $query->andFilterWhere([
             'id' => $this->id,
             'machine_parameters_id' => $this->machine_parameters_id,
-            'create_date' => $this->create_date,
+            'machine_parameter_tag_id' => $this->machine_parameter_tag_id,
             'machine_id' => $this->machine_id,
         ]);
 
         $query->andFilterWhere(['like', 'machine_parameters_name', $this->machine_parameters_name])
             ->andFilterWhere(['like', 'machine_parameters_value', $this->machine_parameters_value])
-            ->andFilterWhere(['like', 'create_time', $this->create_time]);
+            ->andFilterWhere(['like', 'entry_timestamp', $this->entry_timestamp]);
 
         return $dataProvider;
     }

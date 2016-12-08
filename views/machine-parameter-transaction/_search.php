@@ -19,15 +19,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'machine_parameters_id') ?>
 
+    <?= $form->field($model, 'machine_parameter_tag_id') ?>
+
     <?= $form->field($model, 'machine_parameters_name') ?>
 
     <?= $form->field($model, 'machine_parameters_value') ?>
 
-    <?= $form->field($model, 'create_date') ?>
-
-    <?php // echo $form->field($model, 'create_time') ?>
-
     <?php // echo $form->field($model, 'machine_id') ?>
+
+    <?php // echo $form->field($model, 'entry_timestamp') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

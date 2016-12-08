@@ -42,7 +42,13 @@ class CompanyDetailSearch extends CompanyDetail
      */
     public function search($params)
     {
-        $query = CompanyDetail::find();
+		
+		if(Yii::$app->user->identity->is_admin==1){
+			 $query = CompanyDetail::find();
+		}else{
+			 $query = CompanyDetail::find()->where(['user_id' => Yii::$app->user->id]);
+		}
+       
 
         // add conditions that should always apply here
 
